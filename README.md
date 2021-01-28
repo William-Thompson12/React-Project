@@ -1,3 +1,10 @@
+# Memoriez/React-Project
+## Summary:
+Tired of being lonely? In need of some human interaction? Look no further then Crushn'! Create a profile, select a distance, choose what tags and traits are specific to you. All that's left to do is hit that button and get Crushn'! We are not liable for any bad dates
+
+### Deployment
+https://react-project-dc.netlify.app/
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
@@ -61,7 +68,6 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/m
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
 
