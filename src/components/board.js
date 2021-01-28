@@ -1,53 +1,44 @@
 import React from 'react'
 import Buttons from './buttons'
 
+const defaultState = {
+    max: 9
+}
+
 class Board extends React.Component{
     constructor(props){
         super(props);
-        this.state = {
-            pattern: [],
-            playerPattern: [],
-            max: this.props.max || 9
-        }
+        this.state = defaultState
     }
 
-    _generatePattern() {
-        // let x = Math.random() * (this.state.max - 1) + 1;
-        // push number to state
-    }
-
-    _checkPattern() {
-        //pattern.stringify === playerPattern?
-        //if not display Loss
-        //else if check winner 
-        //if not continue turn
-    }
-
-    _pushValue() {
-        console.log("value isn't found" || this.state.value)
-        // push number to state
+    _buttonGlow() {
+        document.querySelector(`#${this.state.value || 1}`).classList.add('glow');
     }
 
     _renderBoard() {
         let newButtons = []
 
         for(let i = 1;i <= this.state.max; i++){
-            console.log('pushing new button')
             newButtons.push(i)
         }
         
         return(
         <>
             {newButtons.map(buttonValue => (
-            <Buttons handleClick={this._pushValue} value={buttonValue} key={buttonValue}/>
+                //add handleClick
+            <Buttons value={buttonValue} key={buttonValue}/>
             ))}
         </>
         )
     }
+    
     render() {
         return (
-            <div className="game-board">
-            {this._renderBoard()}
+            <div className="game-container">
+                <button className="btn btn-dark" id="check-pattern" onClick={(e) => this._pushValue(e)}>Check Pattern</button>
+                <div className="game-board">
+                    {this._renderBoard()}
+                </div>
             </div>
         )
     }

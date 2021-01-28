@@ -10,7 +10,7 @@ class Buttons extends React.Component{
 
     render() {
         return (
-            <button className="button" onClick={this.props.handleClick}></button>
+            <button className="game-button" id={this.state.value} onClick={this.props.handleClick}></button>
         )
     }
 }
