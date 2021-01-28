@@ -11,7 +11,7 @@ class Header extends React.Component{
         return (
             <nav className="navbar navbar-dark text-center bg-dark fixed-top">
                 <div className="container-fluid">
-                    <span className="navbar-brand mb-0 h1">Memoriez</span>
+                    <h1 className="navbar-brand mb-0">Memoriez</h1>
                 </div>
             </nav>
         )
