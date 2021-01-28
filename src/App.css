@@ -1,7 +1,7 @@
 .App {
   background-color: rgb(28, 62, 90);
   width: 100vw;
-  height: 100vh;
+  height: 100%;
   display: flex;
   justify-content: center;
   align-content: center;
@@ -20,22 +20,8 @@
   background-color: white;
 }
 .glow {
-  animation: glowing 1300ms 2s;
-
-  @keyframes glowing {
-    0% {
-      background-color: #2ba805;
-      box-shadow: 0 0 5px #2ba805;
-    }
-    50% {
-      background-color: #49e819;
-      box-shadow: 0 0 20px #49e819;
-    }
-    100% {
-      background-color: #2ba805;
-      box-shadow: 0 0 5px #2ba805;
-    }
-  }
+  animation: glowing 1000ms 0.5s;
+  cursor: default;
 }
 .game-container{
   display: flex;
@@ -43,4 +29,22 @@
 }
 #check-pattern{
   margin-top: 20%;
+}
+#start-game{
+  margin-bottom: 20%;
+}
+@keyframes glowing {
+  0% {
+    background-color: #9afd7c;
+    box-shadow: 0 0 20px #69ec41;
+  }
+  50% {
+    background-color: #8af56a;
+    box-shadow: 0 0 5px #5cc73b;
+  }
+  
+  100% {
+    background-color: #2ba805;
+    box-shadow: 0 0 5px #2ba805;
+  }
 }

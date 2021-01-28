@@ -2,7 +2,8 @@ import React from 'react'
 import Buttons from './buttons'
 
 const defaultState = {
-    max: 9
+    max: 9,
+    playerPattern: []
 }
 
 class Board extends React.Component{
@@ -11,8 +12,13 @@ class Board extends React.Component{
         this.state = defaultState
     }
 
-    _buttonGlow() {
-        document.querySelector(`#${this.state.value || 1}`).classList.add('glow');
+    _patternCounter(value) {
+        // const newPattern = [...state.playerPattern, value];
+        // this.setState({
+        //     ...state,
+        //     playerPattern: newPattern
+        // })
+        console.log(value)
     }
 
     _renderBoard() {
@@ -26,7 +32,7 @@ class Board extends React.Component{
         <>
             {newButtons.map(buttonValue => (
                 //add handleClick
-            <Buttons value={buttonValue} key={buttonValue}/>
+            <Buttons handleClick={() => this._patternCounter()} value={buttonValue} key={buttonValue}/>
             ))}
         </>
         )
@@ -39,6 +45,8 @@ class Board extends React.Component{
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
+                {/* needs the start function (start function needs to check if user won or finished game gameFinished ? *are you sure pop up*) */}
+                <button className="btn btn-success" id="start-game" onClick={this.props.start}>Start Game</button>
             </div>
         )
     }

@@ -12,13 +12,19 @@ import {
 //             if(state.pattern.length < 9){
 //                 if(state.pattern === state.playerPattern){
 //                     patternReducer(state.pattern, GENERATE_PATTERN);
+                       //needs to wipe glow class on each button can call the same function for generating computer glow
 //                 } else {
 //                     //display loser function
 //                     console.log('Loser')
 //                 }
 //             }else{
-//                 //display winner function
-//                 console.log('Winner')
+                   // display winner function
+//                 if(state.pattern === state.playerPattern){
+//                     console.log('Winner')
+//                 } else {
+//                     //display loser function
+//                     console.log('Loser')
+//                 }
 //             }
 //             break;
 //         }
@@ -50,9 +56,6 @@ function playerPatternReducer(state=[], action) {
             return state;
     }
 }
-
-// const pattern = {patternReducer, checkWinner};
-// const playerPattern = {playerPatternReducer, checkWinner};
 
 export const rootReducer = combineReducers({
     pattern: patternReducer,

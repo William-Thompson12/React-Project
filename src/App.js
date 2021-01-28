@@ -11,7 +11,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
-        <Board />
+        <Board start={'start function'}/>
         <Footer />
       </div>
     );
