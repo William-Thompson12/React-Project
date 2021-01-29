@@ -48,6 +48,17 @@ function patternReducer(state=[], action) {
 function playerPatternReducer(state=[], action) {
     switch(action.type){
         case PUSH_PATTERN:
+            // if(state.pattern.length < action.payload.playerPattern.length) {
+            //     return [
+            //         ...state,
+            //         action.payload.playerPattern
+            //     ]
+            // } else {
+            //     return [
+            //         //replace with loss
+            //         console.log('you lost')
+            //     ]
+            // }
             return [
                 ...state,
                 action.payload.playerPattern

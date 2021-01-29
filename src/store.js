@@ -5,9 +5,5 @@ const defaultState = {
     pattern: [],
     playerPattern: [],
 }
-
-
-
-const store = createStore(rootReducer, defaultState) 
-
-export default store;
+ 
+export const store = createStore(rootReducer, defaultState);

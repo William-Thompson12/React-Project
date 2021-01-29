@@ -1,4 +1,4 @@
-1. Pass Values (generatePattern/pushPattern) to pattern and playerPattern state.
+1. Pass Values from (generatePattern) onClick to pattern state.
 2. Check Values of pattern and playerPattern state (checkWinner). (More logic sudo coded out),(Also needs to remove class glow from board)
 3. Start game resets the pattern and playerPattern state. (Also needs to remove class glow from board)
 4. Have a function take in the pattern state, add glow class on a timer for each value. (Also needs to remove class glow from board)

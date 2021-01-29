@@ -33,10 +33,11 @@ export function generatePattern() {
 }
 
 export function pushPattern(playerPattern) {
+    console.log(playerPattern)
     return {
         type: PUSH_PATTERN,
         payload: {
-            playerPattern: [playerPattern]
+            playerPattern
         }
     }
 }

@@ -12,9 +12,20 @@ class Buttons extends React.Component{
         document.getElementById(`${id}`).classList.add('glow');
     }
 
+    _handleClick(value) {
+        //sends value of button
+        this.props.handleClick(value);
+        //glow effect
+        this._glow(value);
+        //generates new pattern value
+        this.props.generateAfterClick();
+    }
+
     render() {
         return (
-            <button className="game-button" id={this.state.value} onClick={this.props.handleClick(this.state.value), () => this._glow(this.state.value)}></button>
+            <>
+            <button className="game-button" id={this.state.value} onClick={() => this._handleClick(this.state.value)}></button>
+            </>
         )
     }
 }

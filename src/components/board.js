@@ -1,6 +1,7 @@
 import React from 'react'
 import Buttons from './buttons'
 
+
 const defaultState = {
     max: 9,
     playerPattern: []
@@ -31,8 +32,7 @@ class Board extends React.Component{
         return(
         <>
             {newButtons.map(buttonValue => (
-                //add handleClick
-            <Buttons handleClick={() => this._patternCounter()} value={buttonValue} key={buttonValue}/>
+            <Buttons generateAfterClick={this.props.generateAfterClick} handleClick={this.props.handleClick} value={buttonValue} key={buttonValue}/>
             ))}
         </>
         )
@@ -41,7 +41,7 @@ class Board extends React.Component{
     render() {
         return (
             <div className="game-container">
-                <button className="btn btn-dark" id="check-pattern" onClick={(e) => this._pushValue(e)}>Check Pattern</button>
+                <button className="btn btn-dark" id="check-pattern" onClick={this.props.checkWinnerClick}>Check Pattern</button>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
