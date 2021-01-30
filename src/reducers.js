@@ -1,45 +1,43 @@
 import { combineReducers } from 'redux';
 import {
-    GENERATE_PATTERN,
     PUSH_PATTERN, 
-    // START_GAME,
-    // CHECK_WINNER
+    START_GAME,
+    CHECK_WINNER,
+    RESET_GAME
 } from './actions';
-
-// function checkWinner(state=[], action) {
-//     switch(action.type){
-//         case CHECK_WINNER:{
-//             if(state.pattern.length < 9){
-//                 if(state.pattern === state.playerPattern){
-//                     patternReducer(state.pattern, GENERATE_PATTERN);
-                       //needs to wipe glow class on each button can call the same function for generating computer glow
-//                 } else {
-//                     //display loser function
-//                     console.log('Loser')
-//                 }
-//             }else{
-                   // display winner function
-//                 if(state.pattern === state.playerPattern){
-//                     console.log('Winner')
-//                 } else {
-//                     //display loser function
-//                     console.log('Loser')
-//                 }
-//             }
-//             break;
-//         }
-//         default:
-//             return state;
-//     }
-// }
 
 function patternReducer(state=[], action) {
     switch(action.type){
-        case GENERATE_PATTERN:
+        case START_GAME: {
+            let number = Math.floor(Math.random() * (9 - 1) + 1);
             return [
                 ...state,
-                action.payload.pattern 
+                number
             ]
+        }
+        case CHECK_WINNER:{
+            if(state.pattern.length < 9){
+                if(state.pattern === action.payload.playerPattern){
+                    let number = Math.floor(Math.random() * (9 - 1) + 1);
+                    return [
+                        ...state,
+                        number
+                    ]
+                } else {
+                    //display loser function
+                    console.log('Loser')
+                }
+            }else{
+                    //display winner function
+                if(state.pattern === state.playerPattern){
+                    console.log('Winner')
+                } else {
+                    //display loser function
+                    console.log('Loser')
+                }
+            }
+            break;
+        }
         default:
             return state;
     }
@@ -48,28 +46,37 @@ function patternReducer(state=[], action) {
 function playerPatternReducer(state=[], action) {
     switch(action.type){
         case PUSH_PATTERN:
-            // if(state.pattern.length < action.payload.playerPattern.length) {
-            //     return [
-            //         ...state,
-            //         action.payload.playerPattern
-            //     ]
-            // } else {
-            //     return [
-            //         //replace with loss
-            //         console.log('you lost')
-            //     ]
-            // }
-            return [
-                ...state,
-                action.payload.playerPattern
-            ]
+            if(action.payload.pattern.length < action.payload.playerPattern.length) {
+                return [
+                    ...state,
+                    action.payload.playerPattern
+                ]
+            } else {
+                console.log('Loser')
+                return [
+                    ...state,
+                    action.payload.playerPattern,
+                    //replace with loss
+                ]
+            }
         default:
             return state;
     }
 }
 
+function gameStatusReducer(state=false, action) {
+    switch(action.type) {
+        case RESET_GAME: {
+            break;
+        }
+        default:
+            return state
+    }
+}
+
 export const rootReducer = combineReducers({
     pattern: patternReducer,
-    playerPattern: playerPatternReducer
+    playerPattern: playerPatternReducer,
+    gameStatus: gameStatusReducer
 })
 

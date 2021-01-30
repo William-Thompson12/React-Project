@@ -3,8 +3,7 @@ import Buttons from './buttons'
 
 
 const defaultState = {
-    max: 9,
-    playerPattern: []
+    max: 9
 }
 
 class Board extends React.Component{
@@ -13,13 +12,8 @@ class Board extends React.Component{
         this.state = defaultState
     }
 
-    _patternCounter(value) {
-        // const newPattern = [...state.playerPattern, value];
-        // this.setState({
-        //     ...state,
-        //     playerPattern: newPattern
-        // })
-        console.log(value)
+    _glow(id) {
+        document.getElementById(`${id}`).classList.add('glow');
     }
 
     _renderBoard() {
@@ -32,21 +26,34 @@ class Board extends React.Component{
         return(
         <>
             {newButtons.map(buttonValue => (
-            <Buttons generateAfterClick={this.props.generateAfterClick} handleClick={this.props.handleClick} value={buttonValue} key={buttonValue}/>
+            <Buttons handleClick={this.props.handleClick} pattern={this.props.pattern} value={buttonValue} key={buttonValue}/>
             ))}
         </>
         )
     }
     
+    _startGameClick() {
+        //starts game
+        this.props.startGameClick();
+        let computerArr = this.props.pattern
+        //set glow
+        setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
+            this._glow(button);
+        }), 2000)
+        setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
+            this._glow(button);
+        }), 3010)
+    }
+
     render() {
         return (
             <div className="game-container">
-                <button className="btn btn-dark" id="check-pattern" onClick={this.props.checkWinnerClick}>Check Pattern</button>
+                <button className="btn btn-dark" id="check-pattern" onClick={() => this.props.checkWinnerClick(this.props.playerPattern, this.props.pattern)}>Check Pattern</button>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
-                {/* needs the start function (start function needs to check if user won or finished game gameFinished ? *are you sure pop up*) */}
-                <button className="btn btn-success" id="start-game" onClick={this.props.start}>Start Game</button>
+                {console.log(this.props.playerPattern, this.props.pattern)}
+                <button className="btn btn-success" id="start-game" onClick={() => this._startGameClick()}>Start Game</button>
             </div>
         )
     }

@@ -1,9 +1,8 @@
 // Game Action Types
 export const START_GAME = 'START_GAME'
 export const CHECK_WINNER = 'CHECK_WINNER'
-
+export const RESET_GAME = 'RESET_GAME'
 // Pattern Action Types
-export const GENERATE_PATTERN = 'GENERATE_PATTERN';
 export const PUSH_PATTERN = 'PUSH_PATTERN';
 
 export function startGame() {
@@ -14,32 +13,30 @@ export function startGame() {
     }
 }
 
-export function checkWinner() {
+export function checkWinner(playerPattern, pattern) {
+    console.log(playerPattern, pattern);
     return {
         type: CHECK_WINNER,
         payload:{
+            playerPattern,
+            pattern
         }
     }
 }
 
-export function generatePattern() {
-    let number = Math.random() * (9 - 1) + 1;
-    return {
-        type: GENERATE_PATTERN,
-        payload: {
-            pattern: Math.floor(number)
-        }
-    }
-}
-
-export function pushPattern(playerPattern) {
-    console.log(playerPattern)
+export function pushPattern(playerPattern, pattern) {
     return {
         type: PUSH_PATTERN,
         payload: {
+            pattern,
             playerPattern
         }
     }
 }
-
-
+ export function resetGame() {
+    return {
+        type: RESET_GAME,
+        payload: {
+        }
+    }
+}

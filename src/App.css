@@ -1,3 +1,6 @@
+html {
+  background-color:  rgb(28, 62, 90);
+}
 .App {
   background-color: rgb(28, 62, 90);
   width: 100vw;
@@ -20,7 +23,7 @@
   background-color: white;
 }
 .glow {
-  animation: glowing 1000ms 0.5s;
+  animation: glowing 500ms 1s;
   cursor: default;
 }
 .game-container{
