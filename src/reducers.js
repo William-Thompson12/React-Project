@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import { defaultState } from './store'; 
 import {
     PUSH_PATTERN, 
     START_GAME,
@@ -16,9 +17,12 @@ function patternReducer(state=[], action) {
             ]
         }
         case CHECK_WINNER:{
-            if(state.pattern.length < 9){
-                if(state.pattern === action.payload.playerPattern){
+        let statePattern = JSON.stringify(state);
+        let playerPattern = JSON.stringify(action.payload.playerPattern);
+            if(state.length < 9){
+                if(statePattern === playerPattern){
                     let number = Math.floor(Math.random() * (9 - 1) + 1);
+
                     return [
                         ...state,
                         number
@@ -26,10 +30,11 @@ function patternReducer(state=[], action) {
                 } else {
                     //display loser function
                     console.log('Loser')
+                    return null
                 }
             }else{
+                if(statePattern === playerPattern){
                     //display winner function
-                if(state.pattern === state.playerPattern){
                     console.log('Winner')
                 } else {
                     //display loser function
@@ -37,6 +42,9 @@ function patternReducer(state=[], action) {
                 }
             }
             break;
+        }
+        case RESET_GAME: {
+            return defaultState.pattern;
         }
         default:
             return state;
@@ -59,24 +67,16 @@ function playerPatternReducer(state=[], action) {
                     //replace with loss
                 ]
             }
+            case RESET_GAME: {
+                return defaultState.playerPattern;
+            }
         default:
             return state;
     }
 }
 
-function gameStatusReducer(state=false, action) {
-    switch(action.type) {
-        case RESET_GAME: {
-            break;
-        }
-        default:
-            return state
-    }
-}
-
 export const rootReducer = combineReducers({
     pattern: patternReducer,
-    playerPattern: playerPatternReducer,
-    gameStatus: gameStatusReducer
+    playerPattern: playerPatternReducer
 })
 

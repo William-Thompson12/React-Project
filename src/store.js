@@ -1,10 +1,10 @@
 import { createStore } from 'redux';
 import { rootReducer } from './reducers';
 
-const defaultState = {
+export const defaultState = {
     pattern: [],
     playerPattern: [],
-    gameStatus: false
+    // gameStatus: false
 }
  
 export const store = createStore(rootReducer, defaultState);

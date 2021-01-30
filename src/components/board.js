@@ -33,9 +33,14 @@ class Board extends React.Component{
     }
     
     _startGameClick() {
+        const computerArr = this.props.pattern
+        const startGame = this.props.startGameClick()
         //starts game
-        this.props.startGameClick();
-        let computerArr = this.props.pattern
+        const promiseA = (new Promise (startGame, null) => {
+            startGame()
+        })
+        //run glow function
+        promiseA.then((val) => {
         //set glow
         setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
             this._glow(button);
@@ -43,6 +48,8 @@ class Board extends React.Component{
         setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
             this._glow(button);
         }), 3010)
+        })
+        promiseA.catch((e) => {console.error(e);})
     }
 
     render() {
@@ -52,8 +59,10 @@ class Board extends React.Component{
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
-                {console.log(this.props.playerPattern, this.props.pattern)}
-                <button className="btn btn-success" id="start-game" onClick={() => this._startGameClick()}>Start Game</button>
+                <div className="game-buttons">
+                    <button className="btn btn-success" id="start-game" onClick={() => this._startGameClick()}>Start Game</button>
+                    <button className="btn btn-danger" id="reset-game" onClick={() => this.props.resetGameClick()}>Reset Game</button>
+                </div>
             </div>
         )
     }
