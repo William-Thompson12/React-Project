@@ -70,23 +70,15 @@ function patternReducer(state=[], action) {
 
 function playerPatternReducer(state=[], action) {
     switch(action.type){
-        case PUSH_PATTERN:
-            if(action.payload.pattern.length < action.payload.playerPattern.length) {
-                return [
-                    ...state,
-                    action.payload.playerPattern
-                ]
-            } else {
-                console.log('Loser')
-                return [
-                    ...state,
-                    action.payload.playerPattern,
-                    //replace with loss
-                ]
-            }
-            case RESET_GAME: {
-                return defaultState.playerPattern;
-            }
+        case PUSH_PATTERN: {
+            return [
+                ...state,
+                action.payload.playerPattern
+            ]
+        }
+        case RESET_GAME: {
+            return defaultState.playerPattern;
+        }
         default:
             return state;
     }

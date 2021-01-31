@@ -10,6 +10,7 @@ html {
   align-content: center;
 }
 .game-board {
+  margin-top: 35%;
   width: 400px;
   height: 400px;
   background-color: black;
