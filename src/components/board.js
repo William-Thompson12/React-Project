@@ -12,10 +12,6 @@ class Board extends React.Component{
         this.state = defaultState
     }
 
-    _glow(id) {
-        document.getElementById(`${id}`).classList.add('glow');
-    }
-
     _renderBoard() {
         let newButtons = []
 
@@ -33,24 +29,17 @@ class Board extends React.Component{
     }
     
     _startGameClick() {
-        const computerArr = this.props.pattern
-        const startGame = this.props.startGameClick()
-        //starts game
-        const promiseA = (new Promise (startGame, null) => {
+        const startGame = this.props.startGameClick;
+        const glow = this.props.glow;
+        try {
             startGame()
-        })
-        //run glow function
-        promiseA.then((val) => {
-        //set glow
-        setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
-            this._glow(button);
-        }), 2000)
-        setTimeout(() => console.log('running glow'), computerArr.forEach(button => {
-            this._glow(button);
-        }), 3010)
-        })
-        promiseA.catch((e) => {console.error(e);})
+        }catch (error) {
+            console.log(error)
+        } finally {
+            glow()
+        }
     }
+    
 
     render() {
         return (

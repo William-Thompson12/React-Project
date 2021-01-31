@@ -1,7 +1,7 @@
 import Board from '../components/board';
 import { connect } from 'react-redux';
 
-import { pushPattern, checkWinner, startGame, resetGame } from '../actions';
+import { glow, pushPattern, checkWinner, startGame, resetGame } from '../actions';
 
 function mapStateToProps(state) {
     return {
@@ -25,6 +25,9 @@ function mapDispatchToProps(dispatch) {
         },
         resetGameClick: () => {
             dispatch(resetGame());
+        },
+        glow: () => {
+            dispatch(glow());
         }
     }
 }

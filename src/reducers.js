@@ -4,8 +4,16 @@ import {
     PUSH_PATTERN, 
     START_GAME,
     CHECK_WINNER,
-    RESET_GAME
+    RESET_GAME,
+    GLOW
 } from './actions';
+
+function glow(id) {
+    document.getElementById(`${id}`).classList.add('glow');
+}
+function unGlow(id) {
+    document.getElementById(`${id}`).removeAttribute("glow")
+}
 
 function patternReducer(state=[], action) {
     switch(action.type){
@@ -22,7 +30,6 @@ function patternReducer(state=[], action) {
             if(state.length < 9){
                 if(statePattern === playerPattern){
                     let number = Math.floor(Math.random() * (9 - 1) + 1);
-
                     return [
                         ...state,
                         number
@@ -45,6 +52,16 @@ function patternReducer(state=[], action) {
         }
         case RESET_GAME: {
             return defaultState.pattern;
+        }
+        case GLOW: {
+            const computerArr = state
+            computerArr.forEach(button => {
+                glow(button);
+            })
+            setTimeout(() => computerArr.forEach(button => {
+                unGlow(button);
+            }), 2000)
+            return state
         }
         default:
             return state;
