@@ -27,11 +27,11 @@ html {
   animation: glowing 500ms 1s;
   cursor: default;
 }
-.game-container{
+.game-container {
   display: flex;
   flex-direction: column;
 }
-.game-buttons{
+.game-buttons {
   display: flex;
   flex-direction: row;
   margin-bottom: 25%;
@@ -41,8 +41,10 @@ html {
   border-radius: 0;
   margin-left: .35%;
 }
-#check-pattern{
-  margin-top: 20%;
+#game-message {
+  font-size: large;
+  color: #69ec41;
+  text-align: center;
 }
 .footer-links {
   display: flex;

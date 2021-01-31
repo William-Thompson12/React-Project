@@ -19,6 +19,7 @@ class Buttons extends React.Component{
         //glow effect
         this._glow(value);
         this.props.checkWinnerClick([this.state.value], this.props.pattern)
+        this.props.glowComputer();
     }
 
     render() {

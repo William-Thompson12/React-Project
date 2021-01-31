@@ -22,7 +22,7 @@ class Board extends React.Component{
         return(
         <>
             {newButtons.map(buttonValue => (
-            <Buttons handleClick={this.props.handleClick} pattern={this.props.pattern} value={buttonValue} key={buttonValue} checkWinnerClick={this.props.checkWinnerClick}/>
+            <Buttons handleClick={this.props.handleClick} pattern={this.props.pattern} value={buttonValue} key={buttonValue} checkWinnerClick={this.props.checkWinnerClick} glowComputer={this.props.glow}/>
             ))}
         </>
         )
@@ -51,6 +51,7 @@ class Board extends React.Component{
                     <button className="btn btn-success" id="start-game" onClick={() => this._startGameClick()}>Start Game</button>
                     <button className="btn btn-danger" id="reset-game" onClick={() => this.props.resetGameClick()}>Reset Game</button>
                 </div>
+                <div id="game-message"></div>
             </div>
         )
     }

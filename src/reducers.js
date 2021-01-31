@@ -30,6 +30,7 @@ function patternReducer(state=[], action) {
             if(state.length < 9){
                 if(statePattern === playerPattern){
                     let number = Math.floor(Math.random() * (9 - 1) + 1);
+                    document.getElementById('game-message').innerHTML = "Success!"
                     return [
                         ...state,
                         number
@@ -37,14 +38,17 @@ function patternReducer(state=[], action) {
                 } else {
                     //display loser function
                     console.log('Loser')
+                    document.getElementById('game-message').innerHTML = "You Stink!"
                     return null
                 }
             }else{
                 if(statePattern === playerPattern){
                     //display winner function
+                    document.getElementById('game-message').innerHTML = "Success!"
                     console.log('Winner')
                 } else {
                     //display loser function
+                    document.getElementById('game-message').innerHTML = "You Stink!"
                     console.log('Loser')
                 }
             }
