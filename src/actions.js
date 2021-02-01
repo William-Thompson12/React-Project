@@ -42,6 +42,11 @@ export function pushPattern(playerPattern, pattern) {
         }
     }
 }
+export function setMessage(event) {
+    document.getElementById(`popup-container`).classList.add("popup-container");
+    document.getElementById(`popup-button`).classList.remove("popup-button");
+    document.getElementById(`popup-message`).innerHTML = `${event === true ? "Good Job!" : "Maybe Next Time"}`
+}
 export function resetGame() {
     return {
         type: RESET_GAME,

@@ -3,6 +3,7 @@ import './App.css';
 import Board from './containers/pushPatternContainer';
 import Header from './components/header';
 import Footer from './components/footer';
+import Popup from './containers/popupContainer'
 
 class App extends React.Component {
 
@@ -11,6 +12,7 @@ class App extends React.Component {
     return (
       <div className="App">
         <Header />
+        <Popup />
         <Board />
         <Footer />
       </div>

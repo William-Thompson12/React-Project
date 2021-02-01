@@ -11,7 +11,11 @@ class Buttons extends React.Component{
     }
 
     _glow(id) {
+        let button = [id]
         document.getElementById(`${id}`).classList.add('glow');
+        setTimeout(() => button.forEach(button => {
+            document.getElementById(`${button}`).classList.remove("glow");
+        }), 1100)
     };
     _localCount(buttonValue, pattern) {
         let localPlayerArr = this.state.localPlayerPattern; 

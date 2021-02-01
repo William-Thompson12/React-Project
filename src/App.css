@@ -31,6 +31,26 @@ html {
   text-align: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
+.popup-button {
+  opacity: 0;
+}
+.popup-container {
+  display: flex;
+  flex-direction: column;
+  z-index: 9999;
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  background-color: rgb(28, 62, 90);
+  justify-content: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+.popup-message {
+  color: white;
+  font-size: 7rem;
+  margin-bottom: 10%;
+}
 .game-container {
   display: flex;
   flex-direction: column;
