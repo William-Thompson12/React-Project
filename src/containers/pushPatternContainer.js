@@ -8,7 +8,8 @@ function mapStateToProps(state) {
     return {
         // propName seen by React : value-in-state
         playerPattern: state.playerPattern,
-        pattern: state.pattern
+        pattern: state.pattern,
+        round: state.round
     }
 }
 

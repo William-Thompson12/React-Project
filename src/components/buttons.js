@@ -13,41 +13,23 @@ class Buttons extends React.Component{
     _glow(id) {
         document.getElementById(`${id}`).classList.add('glow');
     };
-    _localCount(value, pattern) {
-        if(this.state.localPlayerPattern.length === pattern.length - 1) {
-            console.log('Pattern is the same length submit for review')
-            this.setState({
-                value,
-                localPlayerPattern: [ ...this.state.localPlayerPattern, value]}, 
-                () => {
-                    this._handleClick(value, this.state.localPlayerPattern);
-                    this.props.handleClick(this.state.localPlayerPattern, pattern);
-                    console.log(value, '<- value of button, value of local pattern ->', this.state.localPlayerPattern);
-                }
-            );
-            setTimeout(() => this.setState({
-                value,
-                localPlayerPattern: this.defaultState.localPlayerPattern} 
-            ), 200)
-            this.props.resetGame()
-        } else {
-            console.log('Pattern isnt the same length adding to arrray')
-            this.setState({
-                value,
-                localPlayerPattern: [ ...this.state.localPlayerPattern, value]}, 
-                () => {
-                    this._handleClick(value, this.state.localPlayerPattern);
-                    this.props.handleClick(this.state.localPlayerPattern, pattern);
-                    console.log(value, '<- value of button, value of local pattern ->', this.state.localPlayerPattern);
-                }
-            );
-        }
+    _localCount(buttonValue, pattern) {
+        let localPlayerArr = this.state.localPlayerPattern; 
+        this._glow(buttonValue);
+        this.setState({
+            localPlayerPattern: [ ...localPlayerArr, buttonValue]}, 
+        () => {
+            if(localPlayerArr.length === this.props.round) {
+                this._handleClick(buttonValue, localPlayerArr);
+            } else {
+                this.props.handleClick(localPlayerArr, pattern);
+            }
+        })
     };
     _handleClick(value, localPattern) {
         //sends value of button
         try {
-            this._glow(value);
-            this.props.checkWinnerClick(localPattern, this.props.pattern);
+            this.props.checkWinnerClick(localPattern, this.props.pattern, this.props.round);
         }catch (error) {
             console.log(error);
         } finally {

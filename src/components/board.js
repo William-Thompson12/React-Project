@@ -44,7 +44,7 @@ class Board extends React.Component{
     render() {
         return (
             <div className="game-container">
-                <h1 id="round-counter">ROUND:{this.props.pattern.length === 0 ? null : this.props.pattern.length}</h1>
+                <h1 id="round-counter">ROUND:{this.props.round.length === 0 ? null : this.props.round.length}</h1>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>

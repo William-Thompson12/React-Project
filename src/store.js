@@ -4,7 +4,7 @@ import { rootReducer } from './reducers';
 export const defaultState = {
     pattern: [],
     playerPattern: [],
-    // gameStatus: false
+    round: 0
 }
  
 export const store = createStore(rootReducer, defaultState);

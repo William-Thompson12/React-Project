@@ -4,6 +4,7 @@ export const CHECK_WINNER = 'CHECK_WINNER'
 export const RESET_GAME = 'RESET_GAME'
 export const GLOW ='GLOW'
 export const UNGLOW ='UNGLOW'
+export const NEXT_ROUND = 'NEXT_ROUND'
 // Pattern Action Types
 export const PUSH_PATTERN = 'PUSH_PATTERN';
 
@@ -14,13 +15,21 @@ export function startGame() {
         }
     }
 }
-export function checkWinner(playerPattern, pattern) {
+export function nextRound() {
+    return {
+        type: NEXT_ROUND,
+        payload: {
+        }
+    }
+}
+export function checkWinner(playerPattern, pattern, round) {
     console.log(playerPattern, pattern);
     return {
         type: CHECK_WINNER,
         payload:{
             playerPattern,
-            pattern
+            pattern,
+            round
         }
     }
 }
@@ -40,17 +49,11 @@ export function resetGame() {
         }
     }
 }
-export function glow() {
+export function glow(round) {
     return {
         type: GLOW,
         payload: {
-        }
-    }
-}
-export function unGlow() {
-    return {
-        type: UNGLOW,
-        payload: {
+            round
         }
     }
 }
