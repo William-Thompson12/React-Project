@@ -3,6 +3,7 @@ export const START_GAME = 'START_GAME'
 export const CHECK_WINNER = 'CHECK_WINNER'
 export const RESET_GAME = 'RESET_GAME'
 export const GLOW ='GLOW'
+export const UNGLOW ='UNGLOW'
 // Pattern Action Types
 export const PUSH_PATTERN = 'PUSH_PATTERN';
 
@@ -42,6 +43,13 @@ export function resetGame() {
 export function glow() {
     return {
         type: GLOW,
+        payload: {
+        }
+    }
+}
+export function unGlow() {
+    return {
+        type: UNGLOW,
         payload: {
         }
     }

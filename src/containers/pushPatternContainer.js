@@ -1,9 +1,10 @@
 import Board from '../components/board';
 import { connect } from 'react-redux';
 
-import { glow, pushPattern, checkWinner, startGame, resetGame } from '../actions';
+import { startGame, resetGame, glow } from '../actions';
 
 function mapStateToProps(state) {
+    console.log(state)
     return {
         // propName seen by React : value-in-state
         playerPattern: state.playerPattern,
@@ -14,12 +15,6 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         // Translate redux dispatch into props
-        handleClick: (buttonValue, pattern) => {
-            dispatch(pushPattern(buttonValue, pattern));
-        },
-        checkWinnerClick: (arrayValues, pattern) => {
-            dispatch(checkWinner(arrayValues, pattern));
-        },
         startGameClick: () => {
             dispatch(startGame());
         },

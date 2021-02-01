@@ -1,5 +1,5 @@
 import React from 'react'
-import Buttons from './buttons'
+import Buttons from '../containers/buttonContainer'
 
 
 const defaultState = {
@@ -22,7 +22,7 @@ class Board extends React.Component{
         return(
         <>
             {newButtons.map(buttonValue => (
-            <Buttons handleClick={this.props.handleClick} pattern={this.props.pattern} value={buttonValue} key={buttonValue} checkWinnerClick={this.props.checkWinnerClick} glowComputer={this.props.glow}/>
+            <Buttons value={buttonValue} key={buttonValue}/>
             ))}
         </>
         )
@@ -44,6 +44,7 @@ class Board extends React.Component{
     render() {
         return (
             <div className="game-container">
+                <h1 id="round-counter">ROUND:{this.props.pattern.length === 0 ? null : this.props.pattern.length}</h1>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>

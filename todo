@@ -1,4 +1,3 @@
-2. Check Values of pattern and playerPattern state (checkWinner).(Also needs to remove class glow from board)
-3. Start game resets the pattern and playerPattern state. (Also needs to remove class glow from board)
-5. Display winner or loser on (checkWinner)
-6. Start game button checks if person is still playing. (Are you sure?)
+2. Check Values of pattern and playerPattern state (checkWinner). {Not Updating Local State Correctly in ./components/Buttons}.
+3. Set timer inbetween glow functions.
+5. Display winner or loser on (checkWinner).

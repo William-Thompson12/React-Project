@@ -10,7 +10,6 @@ html {
   align-content: center;
 }
 .game-board {
-  margin-top: 35%;
   width: 400px;
   height: 400px;
   background-color: black;
@@ -24,8 +23,13 @@ html {
   background-color: white;
 }
 .glow {
-  animation: glowing 500ms 1s;
+  animation: glowing 500ms 0.5s;
   cursor: default;
+}
+#round-counter {
+  margin-top: 35%;
+  text-align: center;
+  font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 .game-container {
   display: flex;

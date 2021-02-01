@@ -12,36 +12,57 @@ function glow(id) {
     document.getElementById(`${id}`).classList.add('glow');
 }
 function unGlow(id) {
-    document.getElementById(`${id}`).removeAttribute("glow")
+    document.getElementById(`${id}`).classList.remove("glow");
 }
 
 function patternReducer(state=[], action) {
     switch(action.type){
         case START_GAME: {
-            let number = Math.floor(Math.random() * (9 - 1) + 1);
-            return [
-                ...state,
-                number
-            ]
+            let number = Math.floor(Math.random() * (10 - 1) + 1);
+            if(state.length >= 1) {
+                return [
+                    ...defaultState.pattern,
+                    number
+                ]
+            } else {
+                return [
+                    ...state,
+                    number
+                ]
+            }
         }
         case CHECK_WINNER:{
         let statePattern = JSON.stringify(state);
         let playerPattern = JSON.stringify(action.payload.playerPattern);
             if(state.length < 9){
-                if(statePattern === playerPattern){
-                    let number = Math.floor(Math.random() * (9 - 1) + 1);
-                    document.getElementById('game-message').innerHTML = "Success!"
-                    return [
-                        ...state,
-                        number
-                    ]
+                if(action.payload.length === state.length) {
+                    console.log('Pattern is the same length')
+                    if(statePattern === playerPattern){
+                        document.getElementById('game-message').innerHTML = "Success!"
+                        return state
+                    } else {
+                        //display loser function
+                        console.log('Loser')
+                        document.getElementById('game-message').innerHTML = "You Stink!"
+                        return state
+                    }
                 } else {
-                    //display loser function
-                    console.log('Loser')
-                    document.getElementById('game-message').innerHTML = "You Stink!"
-                    return null
+                    console.log('Pattern isnt the same length adding to array')
+                    if(statePattern === playerPattern){
+                        let number = Math.floor(Math.random() * (10 - 1) + 1);
+                        document.getElementById('game-message').innerHTML = "Success!"
+                        return [
+                            ...state,
+                            number
+                        ]
+                    } else {
+                        //display loser function
+                        console.log('Loser')
+                        document.getElementById('game-message').innerHTML = "You Stink!"
+                        return state
+                    }
                 }
-            }else{
+            } else {
                 if(statePattern === playerPattern){
                     //display winner function
                     document.getElementById('game-message').innerHTML = "Success!"
@@ -54,9 +75,6 @@ function patternReducer(state=[], action) {
             }
             break;
         }
-        case RESET_GAME: {
-            return defaultState.pattern;
-        }
         case GLOW: {
             const computerArr = state
             computerArr.forEach(button => {
@@ -64,7 +82,7 @@ function patternReducer(state=[], action) {
             })
             setTimeout(() => computerArr.forEach(button => {
                 unGlow(button);
-            }), 2000)
+            }), 1100)
             return state
         }
         default:
@@ -75,10 +93,7 @@ function patternReducer(state=[], action) {
 function playerPatternReducer(state=[], action) {
     switch(action.type){
         case PUSH_PATTERN: {
-            return [
-                ...state,
-                action.payload.playerPattern
-            ]
+            return action.payload.playerPattern
         }
         case RESET_GAME: {
             return defaultState.playerPattern;
