@@ -21,7 +21,7 @@ export function nextRound() {
 }
 //(localPlayerArr = [], this.props.pattern = state.pattern, this.props.round = state.round)
 export function checkWinner(playerPattern, pattern, round) {
-    console.log(playerPattern, pattern);
+    console.log('actions.js', playerPattern, pattern, round);
     return {
         type: CHECK_WINNER,
         payload:{
@@ -51,11 +51,8 @@ export function resetGame() {
         type: RESET_GAME
     }
 }
-export function glow(round) {
+export function glow() {
     return {
-        type: GLOW,
-        payload: {
-            round
-        }
+        type: GLOW
     }
 }

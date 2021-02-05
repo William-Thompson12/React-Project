@@ -4,8 +4,7 @@ class Buttons extends React.Component{
     constructor(props){
         super(props);
         const defaultState = {
-            value: this.props.value,
-            localPlayerPattern: []
+            value: this.props.value
         };
         this.state = defaultState;
     }
@@ -18,39 +17,27 @@ class Buttons extends React.Component{
         }), 1100)
     };
 
-    _localCount(buttonValue, pattern) {
-        let localPlayerArr = this.state.localPlayerPattern; 
-        //User glow on click.
+    _handleClick(buttonValue, pattern) {
+        const round = this.props.round
+        const playerPattern = this.props.playerPattern
+        let updatedPattern = [...playerPattern, buttonValue]
+        //glow for button
         this._glow(buttonValue);
-        // Update local State Until Length of the Arr matches round.
-        this.setState({
-            // [ ..., button value]
-            localPlayerPattern: [ ...localPlayerArr, buttonValue]},
-            // Call back function with new state 
-        () => {
-            //if Local Player Arr length === round ? checkWinner(), Run Computer Glow for next round on success. :  run pushPattern() which sets the arr to the local arr.
-            if(localPlayerArr.length === this.props.round) {
-                try {
-                    //check winner
-                    this.props.checkWinnerClick(localPlayerArr, this.props.pattern, this.props.round);
-                }catch (error) {
-                    console.log(error);
-                } finally {
-                    //glow effect
-                    this.props.glow(this.props.round);
-                };
-            } else {
-                // pushPattern()
-                this.props.handleClick(localPlayerArr, pattern);
-            }
-        })
+        // pushPattern()
+        this.props.handleClick(buttonValue, pattern);
+        console.log('button.js', updatedPattern, this.props.pattern, round);
+        if(updatedPattern.length === round) {
+            //check winner
+            this.props.checkWinnerClick(updatedPattern, this.props.pattern, round);
+        } else {
+            return
+        }
     };
- 
 
     render() {
         return (
             <>
-            <button className="game-button" id={this.state.value} onClick={() => this._localCount(this.state.value, this.props.pattern)}></button>
+            <button className="game-button" id={this.state.value} onClick={() => this._handleClick(this.state.value, this.props.pattern)}></button>
             </>
         )
     }

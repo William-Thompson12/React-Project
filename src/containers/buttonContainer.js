@@ -18,8 +18,8 @@ function mapDispatchToProps(dispatch) {
         handleClick: (buttonValue, pattern) => {
             dispatch(pushPattern(buttonValue, pattern));
         },
-        checkWinnerClick: (arrayValues, pattern) => {
-            dispatch(checkWinner(arrayValues, pattern));
+        checkWinnerClick: (arrayValues, pattern, round) => {
+            dispatch(checkWinner(arrayValues, pattern, round));
         },
         glow: () => {
             dispatch(glow());

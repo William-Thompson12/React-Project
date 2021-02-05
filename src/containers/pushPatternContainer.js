@@ -1,7 +1,7 @@
 import Board from '../components/board';
 import { connect } from 'react-redux';
 
-import { startGame, resetGame, glow } from '../actions';
+import { startGame, resetGame, glow, nextRound } from '../actions';
 
 function mapStateToProps(state) {
     console.log(state)
@@ -12,7 +12,6 @@ function mapStateToProps(state) {
         round: state.round
     }
 }
-
 function mapDispatchToProps(dispatch) {
     return {
         // Translate redux dispatch into props
@@ -24,6 +23,9 @@ function mapDispatchToProps(dispatch) {
         },
         glow: () => {
             dispatch(glow());
+        },
+        nextRound: () => {
+            dispatch(nextRound());
         }
     }
 }

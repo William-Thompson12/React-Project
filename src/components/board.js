@@ -31,12 +31,13 @@ class Board extends React.Component{
     _startGameClick() {
         const startGame = this.props.startGameClick;
         const glow = this.props.glow;
+        const round = this.props.round;
         try {
-            startGame()
+            startGame();
         }catch (error) {
             console.log(error)
         } finally {
-            glow()
+            glow(round);
         }
     }
     
@@ -45,7 +46,7 @@ class Board extends React.Component{
         return (
             <>
             <div className="game-container">
-                <h1 id="round-counter">ROUND:{this.props.round.length === 0 ? null : this.props.round.length}</h1>
+                <h1 id="round-counter">ROUND:{this.props.round === 0 ? null : this.props.round}</h1>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
