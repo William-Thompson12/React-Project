@@ -24,10 +24,9 @@ function patternReducer(state=[], action) {
             let newGeneratedArr = generatedArr.map(value => {
                 return {value, glow: false }
             })
-            let finalArr = number.concat(newGeneratedArr)
             //adds initial count round
             return [
-                ...finalArr
+                ...number.concat(newGeneratedArr)
             ]
         }
         case CHECK_WINNER:{
@@ -36,7 +35,7 @@ function patternReducer(state=[], action) {
             const playerPattern = action.payload.playerPattern;
             // creating variables to check logic for game
             let joinedPattern = playerPattern.join(' ');
-            // roundState === a string version of the values of the array to round
+            // roundState === a 'string' of the button.values of the pattern by round
             let roundState = state.slice(0, round).map(button => { return button.value; }).join(' ');
             console.log(playerPattern, joinedPattern, roundState);
             if( playerPattern.length !== round) {
