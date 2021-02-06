@@ -58,13 +58,13 @@ html {
   margin-bottom: 10%;
 }
 .game-container {
+  position: absolute;
   display: flex;
   flex-direction: column;
 }
 .game-buttons {
   display: flex;
   flex-direction: row;
-  margin-bottom: 25%;
 }
 .game-buttons > button {
   width: 49.5%;
@@ -72,9 +72,21 @@ html {
   margin-left: .35%;
 }
 #game-message {
-  font-size: large;
+  font-size: x-large;
   color: #69ec41;
   text-align: center;
+  margin-bottom: 20%;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.instruction-container {
+  text-align: center;
+  color: white;
+  position: absolute;
+  left: 5%;
+  top: 30%;
+}
+.instruction-container > ol > li {
+  text-align: left;
 }
 .footer-links {
   display: flex;

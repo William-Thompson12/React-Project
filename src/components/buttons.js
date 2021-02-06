@@ -11,10 +11,13 @@ class Buttons extends React.Component{
 
     _glow(id) {
         let button = [id]
-        document.getElementById(`${id}`).classList.add('glow');
+        document.getElementById(`${button}`).classList.remove("glow");
+        setTimeout(() => button.forEach(button => {
+            document.getElementById(`${button}`).classList.add("glow");
+        }), 10)
         setTimeout(() => button.forEach(button => {
             document.getElementById(`${button}`).classList.remove("glow");
-        }), 1100)
+        }), 500)
     };
 
     _handleClick(buttonValue, pattern) {
@@ -25,7 +28,6 @@ class Buttons extends React.Component{
         this._glow(buttonValue);
         // pushPattern()
         this.props.handleClick(buttonValue, pattern);
-        console.log('button.js', updatedPattern, this.props.pattern, round);
         if(updatedPattern.length === round) {
             //check winner
             this.props.checkWinnerClick(updatedPattern, this.props.pattern, round);

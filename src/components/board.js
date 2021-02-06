@@ -1,6 +1,6 @@
 import React from 'react'
 import Buttons from '../containers/buttonContainer'
-
+import Instructions from '../components/instructions'
 
 const defaultState = {
     max: 9
@@ -11,7 +11,6 @@ class Board extends React.Component{
         super(props);
         this.state = defaultState
     }
-
     _renderBoard() {
         let newButtons = []
 
@@ -27,7 +26,6 @@ class Board extends React.Component{
         </>
         )
     }
-    
     _startGameClick() {
         const startGame = this.props.startGameClick;
         const glow = this.props.glow;
@@ -45,6 +43,7 @@ class Board extends React.Component{
     render() {
         return (
             <>
+            <Instructions />
             <div className="game-container">
                 <h1 id="round-counter">ROUND:{this.props.round === 0 ? null : this.props.round}</h1>
                 <div className="game-board">

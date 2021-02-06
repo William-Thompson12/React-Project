@@ -19,9 +19,9 @@ export function nextRound() {
         type: NEXT_ROUND
     }
 }
+
 //(localPlayerArr = [], this.props.pattern = state.pattern, this.props.round = state.round)
 export function checkWinner(playerPattern, pattern, round) {
-    console.log('actions.js', playerPattern, pattern, round);
     return {
         type: CHECK_WINNER,
         payload:{
