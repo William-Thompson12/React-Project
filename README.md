@@ -1,14 +1,14 @@
 # Memoriez/React-Project
 ## Memory game
 
+### Deployment
+https://react-project-dc.netlify.app/
+
 ## Description
 Memoriez is a 3x3 pattern memory based game, initiate the game by inputing a round number(9 by default) then clicking the start button. Each game starts on round 1, and generates a random pattern with numerical values 1-9. The pattern length is tied to what ever number the user selects. The buttons will glow, and clcickling a button sends but a numerical value to be checked. If the user is correct, they will move on to the next round, where the playersPattern length is incremented by 1.
 
 ## Technologies
 React/Redux
-
-### Deployment
-https://react-project-dc.netlify.app/
 
 ## Available Scripts
 
