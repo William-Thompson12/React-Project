@@ -17,20 +17,15 @@ function patternReducer(state=[], action) {
     const messages = ['Perfect!', 'Nice Job!', 'Good One!', 'You Got It!', 'That one was a little slow...']
     switch(action.type){
         case START_GAME: {
-            let randomNumber = Math.floor(Math.random() * (10 - 1) + 1);
-            let generatedArr = []
-            let number = [{value: randomNumber, glow: true}];
+            const winningRound = action.payload.winningRound <= null || undefined || NaN || 0 ? 9 : action.payload.winningRound;
+            let newArr = []
             // Fill arr with random pattern length of 9, max value 9, min value 1
-            for(let i = 0; i <= 7; i++) {
-                generatedArr.push(Math.floor(Math.random() * (10 - 1) + 1));
+            for(let i = 0; i < winningRound; i++) {
+                newArr.push(Math.floor(Math.random() * (10 - 1) + 1));
             }
-            let newGeneratedArr = generatedArr.map(value => {
-                return {value, glow: false }
-            })
+            console.log(winningRound, newArr, action.payload.winningRound)
             //adds initial count round
-            return [
-                ...number.concat(newGeneratedArr)
-            ]
+            return newArr;
         }
         case CHECK_WINNER:{
             //Updated States passed in
@@ -39,34 +34,29 @@ function patternReducer(state=[], action) {
             // creating variables to check logic for game
             let joinedPattern = playerPattern.join(' ');
             // roundState === a 'string' of the button.values of the pattern by round
-            let roundState = state.slice(0, round).map(button => { return button.value; }).join(' ');
-            console.log(playerPattern, joinedPattern, roundState);
+            let roundState = state.slice(0, round).map(button => { return button; }).join(' ');
+            console.log(joinedPattern, roundState);
             if( playerPattern.length !== round) {
                 return state;
             } else {
                 if(joinedPattern === roundState) {
-                    if(playerPattern.length === 9) {
-                        console.log('winner')
+                    if(playerPattern.length === state.length) {
                         //Display Winner
                         setMessage(true);
                     } else {
                         let randomNumber = Math.floor(Math.random() * (5 - 0) + 0);
-                        //Next Round
                         //set game message
                         document.getElementById(`game-message`).innerHTML = messages[randomNumber]
                         //glow squares for next round
                         const squares = state.slice(0, round + 1);
                         let interval, i = 0; 
                         const glow = () => {
-                            document.getElementById(`${squares[i].value}`).classList.add('glow');
+                            document.getElementById(`${squares[i]}`).classList.add('glow');
                             setTimeout(() => {
-                                console.log('removing glow', i)
-                                document.getElementById(`${squares[i].value}`).classList.remove('glow');
+                                document.getElementById(`${squares[i]}`).classList.remove('glow');
                             }, 800);
-                            console.log(i, squares.length)
                             if (i < squares.length - 1) {
                                 i++;
-                                console.log('i')
                             } 
                             else { 
                                 clearInterval(interval);
@@ -75,7 +65,6 @@ function patternReducer(state=[], action) {
                         interval = setInterval(glow, 1100);
                     }
                 } else {
-                    console.log(playerPattern, roundState)
                     //Display Loser
                     setMessage(false);
                 }
@@ -83,21 +72,12 @@ function patternReducer(state=[], action) {
             }
         }
         case GLOW: {
-            let newArr = []
-            newArr.push(state[0])
-            newArr.forEach(button => {
-                if(button.glow === true) {
-                    //add glow to each button
-                    document.getElementById(`${button.value}`).classList.add('glow');
-                    setTimeout(() => newArr.forEach(button => {
-                        //remove glow from each button
-                        document.getElementById(`${button.value}`).classList.remove("glow");
-                    }), 1000);
-                } else {
-                    //do nothing
-                }
-            })
-           return state;
+            console.log(state[0])
+            //add glow
+            document.getElementById(`${state[0]}`).classList.add('glow');
+            //remove glow
+            setTimeout(() => {document.getElementById(`${state[0]}`).classList.remove("glow");}, 1000);
+            return state;
         }
         case RESET_GAME: {
             //Reset pattern = []
@@ -118,6 +98,7 @@ function playerPatternReducer(state=[], action) {
             ];
         }
         case CHECK_WINNER: {
+            //Reset playerPattern to []
             return defaultState.playerPattern;
         }
         case RESET_GAME: {

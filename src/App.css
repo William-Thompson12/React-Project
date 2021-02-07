@@ -78,12 +78,20 @@ html {
   margin-bottom: 20%;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.winnerRound-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-bottom: 5px;
+}
+#winning-round {
+  width: 40px;
+}
 .instruction-container {
   text-align: center;
   color: white;
-  position: absolute;
-  left: 5%;
-  top: 30%;
 }
 .instruction-container > ol > li {
   text-align: left;
