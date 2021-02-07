@@ -9,9 +9,13 @@ export const UNGLOW ='UNGLOW'
 // Pattern Action Types
 export const PUSH_PATTERN = 'PUSH_PATTERN';
 
-export function startGame() {
+export function startGame(winningRound) {
+    console.log(winningRound)
     return {
-        type: START_GAME
+        type: START_GAME,
+        payload: {
+            winningRound
+        }
     }
 }
 export function nextRound() {

@@ -30,8 +30,10 @@ class Board extends React.Component{
         const startGame = this.props.startGameClick;
         const glow = this.props.glow;
         const round = this.props.round;
+        const winningRound = document.getElementById('winning-round').value
+        console.log(winningRound)
         try {
-            startGame();
+            startGame(winningRound);
         }catch (error) {
             console.log(error)
         } finally {
@@ -43,9 +45,12 @@ class Board extends React.Component{
     render() {
         return (
             <>
-            <Instructions />
             <div className="game-container">
                 <h1 id="round-counter">ROUND:{this.props.round === 0 ? null : this.props.round}</h1>
+                <div className="winnerRound-container">
+                    <label htmlFor="winning-roound">Input a different # for Winning Round: </label>
+                    <input type="text" id="winning-round"  placeholder="9" name="winning-round"/>
+                </div>
                 <div className="game-board">
                     {this._renderBoard()}
                 </div>
@@ -54,6 +59,7 @@ class Board extends React.Component{
                     <button className="btn btn-danger" id="reset-game" onClick={() => this.props.resetGameClick()}>Reset Game</button>
                 </div>
                 <div id="game-message"></div>
+                <Instructions />
             </div>
             </>
         )

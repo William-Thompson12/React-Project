@@ -15,8 +15,8 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
     return {
         // Translate redux dispatch into props
-        startGameClick: () => {
-            dispatch(startGame());
+        startGameClick: (winningRound) => {
+            dispatch(startGame(winningRound));
         },
         resetGameClick: () => {
             dispatch(resetGame());
