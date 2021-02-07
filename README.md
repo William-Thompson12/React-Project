@@ -1,13 +1,14 @@
 # Memoriez/React-Project
-## Summary:
-Tired of being lonely? In need of some human interaction? Look no further then Crushn'! Create a profile, select a distance, choose what tags and traits are specific to you. All that's left to do is hit that button and get Crushn'! We are not liable for any bad dates
+## Memory game
+
+## Description
+Memoriez is a 3x3 pattern memory based game, initiate the game by inputing a round number(9 by default) then clicking the start button. Each game starts on round 1, and generates a random pattern with numerical values 1-9. The pattern length is tied to what ever number the user selects. The buttons will glow, and clcickling a button sends but a numerical value to be checked. If the user is correct, they will move on to the next round, where the playersPattern length is incremented by 1.
+
+## Technologies
+React/Redux
 
 ### Deployment
 https://react-project-dc.netlify.app/
-
-# Getting Started with Create React App
-
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
