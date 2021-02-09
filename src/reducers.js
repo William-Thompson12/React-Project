@@ -23,7 +23,6 @@ function patternReducer(state=[], action) {
             for(let i = 0; i < winningRound; i++) {
                 newArr.push(Math.floor(Math.random() * (10 - 1) + 1));
             }
-            console.log(winningRound, newArr, action.payload.winningRound)
             //adds initial count round
             return newArr;
         }
@@ -35,7 +34,6 @@ function patternReducer(state=[], action) {
             let joinedPattern = playerPattern.join(' ');
             // roundState === a 'string' of the button.values of the pattern by round
             let roundState = state.slice(0, round).map(button => { return button; }).join(' ');
-            console.log(joinedPattern, roundState);
             if( playerPattern.length !== round) {
                 return state;
             } else {
@@ -72,7 +70,6 @@ function patternReducer(state=[], action) {
             }
         }
         case GLOW: {
-            console.log(state[0])
             //add glow
             document.getElementById(`${state[0]}`).classList.add('glow');
             //remove glow

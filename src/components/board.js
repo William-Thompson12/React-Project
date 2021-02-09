@@ -27,11 +27,11 @@ class Board extends React.Component{
         )
     }
     _startGameClick() {
+        this.props.resetGameClick()
         const startGame = this.props.startGameClick;
         const glow = this.props.glow;
         const round = this.props.round;
         const winningRound = document.getElementById('winning-round').value
-        console.log(winningRound)
         try {
             startGame(winningRound);
         }catch (error) {
@@ -56,10 +56,9 @@ class Board extends React.Component{
                 </div>
                 <div className="game-buttons">
                     <button className="btn btn-success" id="start-game" onClick={() => this._startGameClick()}>Start Game</button>
-                    <button className="btn btn-danger" id="reset-game" onClick={() => this.props.resetGameClick()}>Reset Game</button>
                 </div>
-                <div id="game-message"></div>
                 <Instructions />
+                <div id="game-message"></div>
             </div>
             </>
         )

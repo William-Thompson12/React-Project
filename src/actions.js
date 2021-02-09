@@ -10,7 +10,6 @@ export const UNGLOW ='UNGLOW'
 export const PUSH_PATTERN = 'PUSH_PATTERN';
 
 export function startGame(winningRound) {
-    console.log(winningRound)
     return {
         type: START_GAME,
         payload: {
@@ -23,7 +22,6 @@ export function nextRound() {
         type: NEXT_ROUND
     }
 }
-
 //(localPlayerArr = [], this.props.pattern = state.pattern, this.props.round = state.round)
 export function checkWinner(playerPattern, pattern, round) {
     return {

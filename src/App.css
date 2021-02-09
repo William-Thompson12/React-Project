@@ -32,7 +32,7 @@ html {
   animation: glowing-red 500ms 0.1s;
 }
 #round-counter {
-  margin-top: 30%;
+  margin-top: 18%;
   text-align: center;
   font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
@@ -67,9 +67,12 @@ html {
   flex-direction: row;
 }
 .game-buttons > button {
-  width: 49.5%;
+  width: 100%;
   border-radius: 0;
   margin-left: .35%;
+}
+.dropdown > button {
+  width: 100%;
 }
 #game-message {
   font-size: x-large;
@@ -89,9 +92,18 @@ html {
 #winning-round {
   width: 40px;
 }
-.instruction-container {
-  text-align: center;
+.dropdown {
+  display: flex;
   color: white;
+  flex-direction: column;
+  width: 400px;
+}
+.invisiable {
+  opacity: 0%;
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  margin: 0px;
 }
 .instruction-container > ol > li {
   text-align: left;
