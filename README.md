@@ -1,6 +1,8 @@
 # Memoriez/React-Project
 ## Memory game
 
+## Status: Currently Running
+
 ### Deployment
 https://react-project-dc.netlify.app/
 
